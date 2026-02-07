@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Qwen Chat RTL Support",
+  "version": "1.0",
+  "description": "Adds RTL (Right-to-Left) support for Persian text on chat.qwen.ai",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://chat.qwen.ai/*", "https://*.qwen.ai/*"],
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

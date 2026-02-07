@@ -1,0 +1,224 @@
+/* Qwen RTL Extension v7 - Styles */
+/* With proper math direction handling */
+
+/* Import Persian font */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
+
+/* Global font for Persian */
+body,
+html {
+  font-family: "Vazirmatn", "Vazir", "IRANSans", "Tahoma", -apple-system, sans-serif !important;
+}
+
+/* ======== RTL CONTENT STYLES ======== */
+
+body.qwen-rtl-enabled .qwen-markdown,
+body.qwen-rtl-enabled .qwen-markdown-loose,
+body.qwen-rtl-enabled .custom-qwen-markdown,
+body.qwen-rtl-enabled .qwen-markdown-paragraph,
+body.qwen-rtl-enabled .qwen-chat-message,
+body.qwen-rtl-enabled .qwen-chat-message-assistant,
+body.qwen-rtl-enabled .qwen-chat-message-user,
+body.qwen-rtl-enabled .chat-response-message,
+body.qwen-rtl-enabled .chat-response-message-right,
+body.qwen-rtl-enabled .response-message-content,
+body.qwen-rtl-enabled .phase-answer,
+body.qwen-rtl-enabled .t2t {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Lists RTL */
+body.qwen-rtl-enabled .qwen-markdown ul,
+body.qwen-rtl-enabled .qwen-markdown ol {
+  direction: rtl;
+  text-align: right;
+  padding-right: 2em;
+  padding-left: 0;
+}
+
+body.qwen-rtl-enabled .qwen-markdown li {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Headings RTL */
+body.qwen-rtl-enabled .qwen-markdown h1,
+body.qwen-rtl-enabled .qwen-markdown h2,
+body.qwen-rtl-enabled .qwen-markdown h3,
+body.qwen-rtl-enabled .qwen-markdown h4,
+body.qwen-rtl-enabled .qwen-markdown h5,
+body.qwen-rtl-enabled .qwen-markdown h6 {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Tables RTL */
+body.qwen-rtl-enabled .qwen-markdown table {
+  direction: rtl;
+}
+
+body.qwen-rtl-enabled .qwen-markdown th,
+body.qwen-rtl-enabled .qwen-markdown td {
+  text-align: right;
+}
+
+/* Blockquotes RTL */
+body.qwen-rtl-enabled .qwen-markdown blockquote {
+  direction: rtl;
+  text-align: right;
+  border-right: 4px solid #ccc;
+  border-left: none;
+  padding-right: 16px;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* ======== MATH & CODE - ALWAYS LTR ======== */
+/* This is the key fix from chatgpt-math-dir-resolver */
+
+.katex,
+.katex-html,
+.katex-display,
+.MathJax,
+.MathJax_Display,
+.mjx-container,
+mjx-container {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Code blocks - always LTR */
+pre,
+code,
+.qwen-markdown-code,
+.qwen-markdown-pre,
+.qwen-markdown-code-inline,
+.hljs,
+[class*="code-block"],
+[class*="codeblock"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+  font-family: "Consolas", "Monaco", "Courier New", monospace !important;
+}
+
+/* Inline code in RTL context */
+body.qwen-rtl-enabled code:not(pre code) {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* ======== INPUT AREA - EXCLUDE ======== */
+
+.prompt-input-input-area,
+.chat-input-container,
+.chat-input-not-input-feature-flex-container,
+.chat-input,
+#chat-input,
+textarea.chat-input,
+textarea[name="chat-input"] {
+  direction: unset;
+  text-align: unset;
+  unicode-bidi: unset;
+}
+
+/* ======== RTL TOGGLE BUTTON ======== */
+
+.rtl-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary, #666);
+  margin-right: 8px;
+  position: relative;
+}
+
+.rtl-toggle-button:hover {
+  background-color: var(--hover-bg, rgba(0, 0, 0, 0.06));
+  color: var(--text-primary, #333);
+}
+
+.rtl-toggle-button.active {
+  color: #7c5cff;
+  background-color: rgba(124, 92, 255, 0.15);
+}
+
+.rtl-toggle-button.active:hover {
+  background-color: rgba(124, 92, 255, 0.25);
+}
+
+.rtl-toggle-button .anticon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.rtl-toggle-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .rtl-toggle-button {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .rtl-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .rtl-toggle-button.active {
+    color: #9b82ff;
+    background-color: rgba(124, 92, 255, 0.2);
+  }
+}
+
+/* ======== LTR MODE - RESET ALL ======== */
+
+body.qwen-rtl-disabled .qwen-markdown,
+body.qwen-rtl-disabled .qwen-markdown-loose,
+body.qwen-rtl-disabled .custom-qwen-markdown,
+body.qwen-rtl-disabled .qwen-markdown-paragraph,
+body.qwen-rtl-disabled .qwen-chat-message,
+body.qwen-rtl-disabled .qwen-chat-message-assistant,
+body.qwen-rtl-disabled .qwen-chat-message-user,
+body.qwen-rtl-disabled .chat-response-message,
+body.qwen-rtl-disabled .chat-response-message-right,
+body.qwen-rtl-disabled .response-message-content,
+body.qwen-rtl-disabled .phase-answer,
+body.qwen-rtl-disabled .t2t,
+body.qwen-rtl-disabled .qwen-markdown ul,
+body.qwen-rtl-disabled .qwen-markdown ol,
+body.qwen-rtl-disabled .qwen-markdown li,
+body.qwen-rtl-disabled .qwen-markdown h1,
+body.qwen-rtl-disabled .qwen-markdown h2,
+body.qwen-rtl-disabled .qwen-markdown h3,
+body.qwen-rtl-disabled .qwen-markdown h4,
+body.qwen-rtl-disabled .qwen-markdown h5,
+body.qwen-rtl-disabled .qwen-markdown h6,
+body.qwen-rtl-disabled .qwen-markdown table,
+body.qwen-rtl-disabled .qwen-markdown th,
+body.qwen-rtl-disabled .qwen-markdown td,
+body.qwen-rtl-disabled .qwen-markdown blockquote {
+  direction: unset;
+  text-align: unset;
+  unicode-bidi: unset;
+}
+
+body.qwen-rtl-disabled .qwen-markdown blockquote {
+  border-right: none;
+  border-left: 4px solid #ccc;
+  padding-right: 0;
+  padding-left: 16px;
+}
